@@ -1,2 +1,198 @@
 # MyLoVeNastYa121212.github.io
 Hello
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>С 8 Марта ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+h1{
+font-size:60px;
+margin-top:40px;
+}
+
+p{
+font-size:24px;
+}
+
+button{
+margin-top:20px;
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+}
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+margin:40px;
+}
+
+.gallery img{
+width:250px;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* увеличенная картинка */
+
+.modal{
+display:none;
+position:fixed;
+z-index:10;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+}
+
+.modal img{
+max-width:80%;
+max-height:80%;
+border-radius:20px;
+}
+
+/* розы */
+
+.rose{
+position:fixed;
+top:-50px;
+font-size:30px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px) rotate(0deg);}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌸 С 8 Марта! 🌸</h1>
+<p>Ты самая красивая и самая желанная🌹</p>
+
+<button onclick="playMusic()">Нажми на подарок 🎁</button>
+
+<div class="gallery">
+
+<img src="photo1.jpg" onclick="openImg(this)">
+<img src="photo2.jpg" onclick="openImg(this)">
+<img src="photo3.jpg" onclick="openImg(this)">
+<img src="photo4.jpg" onclick="openImg(this)">
+
+</div>
+
+<div class="modal" id="modal" onclick="closeImg()">
+<img id="modalImg">
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function playMusic(){
+document.getElementById("music").play();
+alert("Для самой прекрасной ❤️");
+}
+
+function openImg(img){
+const modal=document.getElementById("modal");
+const modalImg=document.getElementById("modalImg");
+
+modal.style.display="flex";
+modalImg.src=img.src;
+}
+
+function closeImg(){
+document.getElementById("modal").style.display="none";
+}
+
+function createRose(){
+const rose=document.createElement("div");
+rose.className="rose";
+rose.innerHTML="🌹";
+
+rose.style.left=Math.random()*100+"vw";
+rose.style.fontSize=(20+Math.random()*30)+"px";
+rose.style.animationDuration=(4+Math.random()*5)+"s";
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+rose.remove();
+},8000);
+}
+
+setInterval(createRose,300);
+
+</script>
+
+</body>
+</html>
+
+<script>
+
+document.addEventListener("click", function(e){
+
+let heart = document.createElement("div");
+heart.innerHTML = "💖";
+heart.style.position = "fixed";
+heart.style.left = e.clientX + "px";
+heart.style.top = e.clientY + "px";
+heart.style.fontSize = "30px";
+heart.style.pointerEvents = "none";
+heart.style.animation = "heartFloat 2s linear";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},2000);
+
+});
+
+</script>
+
+@keyframes heartFloat{
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+100%{
+transform:translateY(-150px) scale(1.8);
+opacity:0;
+}
+}
